@@ -35,9 +35,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 // The image that will be shown.
-@property (strong, nonatomic, readonly) UIImage *image;
+@property (strong, nonatomic, readonly) UIImageView *refImageView;
+
+@property (nonatomic) BOOL enableZoom;
 
 // Initializes the receiver with the specified image.
+- (id)initWithImageView:(UIImageView *)imageView;
 - (id)initWithImage:(UIImage *)image;
 
 @end

@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import "TGRImageViewController.h"
+#import "ILTranslucentView.h"
 
 @interface TGRImageViewController ()
 
@@ -31,9 +32,17 @@
 
 @implementation TGRImageViewController
 
+- (id)initWithImageView:(UIImageView *)imageView {
+    if (self = [super init]) {
+        _refImageView = imageView;
+    }
+    
+    return self;
+}
+
 - (id)initWithImage:(UIImage *)image {
     if (self = [super init]) {
-        _image = image;
+        _refImageView = [[UIImageView alloc] initWithImage:image];
     }
     
     return self;
@@ -42,12 +51,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.singleTapGestureRecognizer requireGestureRecognizerToFail:self.doubleTapGestureRecognizer];
-    self.imageView.image = self.image;
+    ILTranslucentView *bg = [[ILTranslucentView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    bg.translucentAlpha = .85;
+    bg.translucentStyle = UIBarStyleBlack;
+    bg.translucentTintColor = [UIColor blackColor];
+    bg.translucent = YES;
+    bg.backgroundColor = [UIColor clearColor];
+    
+    [self.view setBackgroundColor:[UIColor clearColor]];
+    [self.view insertSubview:bg atIndex:0];
+    
+    if (!self.enableZoom) {
+        _scrollView.minimumZoomScale = 1;
+        _scrollView.maximumZoomScale = 1;
+        _scrollView.scrollEnabled = NO;
+        _scrollView.delaysContentTouches = NO;
+    }
+    
+    if(self.enableZoom)[self.singleTapGestureRecognizer requireGestureRecognizerToFail:self.doubleTapGestureRecognizer];
+    self.imageView.image = _refImageView.image;
 }
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - UIScrollViewDelegate methods
@@ -65,7 +95,7 @@
 #pragma mark - Private methods
 
 - (IBAction)handleSingleTap:(UITapGestureRecognizer *)tapGestureRecognizer {
-    if (self.scrollView.zoomScale == self.scrollView.minimumZoomScale) {
+    if (!self.enableZoom || (self.enableZoom && self.scrollView.zoomScale == self.scrollView.minimumZoomScale)) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     else {

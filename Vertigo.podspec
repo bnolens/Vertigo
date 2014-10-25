@@ -15,4 +15,6 @@ Pod::Spec.new do |s|
   s.resources    = "Vertigo/TGRImageViewController.xib"
   s.framework    = 'UIKit'
   s.requires_arc = true
+
+  s.dependency 'ILTranslucentView'
 end

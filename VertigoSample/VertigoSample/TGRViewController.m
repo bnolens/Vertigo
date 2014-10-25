@@ -42,7 +42,7 @@
 #pragma mark - Private methods
 
 - (IBAction)showImage {
-    TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[self.imageButton imageForState:UIControlStateNormal]];
+    TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImageView:[self.imageButton imageForState:UIControlStateNormal]];
     viewController.transitioningDelegate = self;
     
     [self presentViewController:viewController animated:YES completion:nil];
