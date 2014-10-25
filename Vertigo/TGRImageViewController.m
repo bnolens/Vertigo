@@ -52,10 +52,10 @@
     [super viewDidLoad];
     
     ILTranslucentView *bg = [[ILTranslucentView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    bg.translucentAlpha = .85;
+    bg.translucentAlpha = 1;
     bg.translucentStyle = UIBarStyleBlack;
     bg.translucentTintColor = [UIColor blackColor];
-    bg.translucent = YES;
+    bg.translucent = NO;
     bg.backgroundColor = [UIColor clearColor];
     
     [self.view setBackgroundColor:[UIColor clearColor]];
@@ -64,20 +64,21 @@
     if (!self.enableZoom) {
         _scrollView.minimumZoomScale = 1;
         _scrollView.maximumZoomScale = 1;
-        _scrollView.scrollEnabled = NO;
         _scrollView.delaysContentTouches = NO;
+    } else {
+        _scrollView.minimumZoomScale = 1;
+        _scrollView.maximumZoomScale = 2;
+        _scrollView.delaysContentTouches = YES;
+        [self.singleTapGestureRecognizer requireGestureRecognizerToFail:self.doubleTapGestureRecognizer];
     }
     
-    if(self.enableZoom)[self.singleTapGestureRecognizer requireGestureRecognizerToFail:self.doubleTapGestureRecognizer];
+    _scrollView.scrollEnabled = YES;
+    
     self.imageView.image = _refImageView.image;
 }
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - UIScrollViewDelegate methods
