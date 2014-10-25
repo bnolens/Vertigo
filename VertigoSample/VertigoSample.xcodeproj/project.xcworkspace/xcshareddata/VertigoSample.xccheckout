@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>953CF393-DC95-4886-B1FB-007DFC4A8004</string>
+	<key>IDESourceControlProjectName</key>
+	<string>VertigoSample</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0C5D8110ADCE54C80E4EEF449817F9311A71BB7D</key>
+		<string>github.com:bnolens/Vertigo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>VertigoSample/VertigoSample.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0C5D8110ADCE54C80E4EEF449817F9311A71BB7D</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:bnolens/Vertigo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0C5D8110ADCE54C80E4EEF449817F9311A71BB7D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0C5D8110ADCE54C80E4EEF449817F9311A71BB7D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Vertigo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

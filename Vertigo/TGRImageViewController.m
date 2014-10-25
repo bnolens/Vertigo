@@ -35,6 +35,12 @@
 - (id)initWithImageView:(UIImageView *)imageView {
     if (self = [super init]) {
         _refImageView = imageView;
+        
+        UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [closeBtn setImage:[UIImage imageNamed:@"ico_close-white"] forState:UIControlStateNormal];
+        closeBtn.frame = CGRectMake(self.view.frame.size.width-40-36, 0, 80, 80);
+        [closeBtn addTarget:self action:@selector(onCloseBtnTouch) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:closeBtn];
     }
     
     return self;
@@ -43,6 +49,12 @@
 - (id)initWithImage:(UIImage *)image {
     if (self = [super init]) {
         _refImageView = [[UIImageView alloc] initWithImage:image];
+        
+        UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [closeBtn setImage:[UIImage imageNamed:@"ico_close-white"] forState:UIControlStateNormal];
+        closeBtn.frame = CGRectMake(self.view.frame.size.width-40-36, 0, 80, 80);
+        [closeBtn addTarget:self action:@selector(onCloseBtnTouch) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:closeBtn];
     }
     
     return self;
@@ -79,6 +91,10 @@
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+- (void) onCloseBtnTouch {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIScrollViewDelegate methods
